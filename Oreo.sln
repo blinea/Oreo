@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31205.134
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oreo", "Oreo\Oreo.csproj", "{190C4DA6-2B56-4DBC-9A5E-F9032873C119}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{190C4DA6-2B56-4DBC-9A5E-F9032873C119}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{190C4DA6-2B56-4DBC-9A5E-F9032873C119}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{190C4DA6-2B56-4DBC-9A5E-F9032873C119}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{190C4DA6-2B56-4DBC-9A5E-F9032873C119}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5A8BAAA0-44A1-4C92-94B1-17A787AD6452}
+	EndGlobalSection
+EndGlobal
