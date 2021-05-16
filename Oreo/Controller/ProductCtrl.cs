@@ -85,9 +85,6 @@ namespace Oreo.Controller
 
             com.CommandText = "select Id, Name, Category, Price, Description, Quantity from Product";
             SqlDataReader register = com.ExecuteReader();
-            Console.Write("\n");
-            Alert.showAlert("      Product Database.     ", ConsoleColor.DarkCyan);
-            Console.Write("\n");
             while (register.Read())
             {
                 Alert.showMessage($"----------------------------", ConsoleColor.DarkCyan);

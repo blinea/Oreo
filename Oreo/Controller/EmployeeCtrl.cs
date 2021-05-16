@@ -76,9 +76,6 @@ namespace Oreo.Controller
 
             com.CommandText = "select Document, Name, Address from Employee";
             SqlDataReader register = com.ExecuteReader();
-            Console.Write("\n");
-            Alert.showAlert("       Client Database.     ", ConsoleColor.DarkCyan);
-            Console.Write("\n");
             while (register.Read())
             {
                 Alert.showMessage($"----------------------------", ConsoleColor.DarkCyan);
