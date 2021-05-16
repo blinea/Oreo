@@ -17,11 +17,13 @@ namespace Oreo.View
             do
             {               
                 char opt = '0';
+                Console.Clear();
+                Welcome();
                 Console.Write("\n");
-                Alert.showMessage($"====================================================", ConsoleColor.DarkYellow);
+                Alert.showMessage($"====================================================", ConsoleColor.DarkBlue);
                 Alert.showMessage($"                     Main Menu", ConsoleColor.DarkMagenta);
                 Console.Write("\n");
-                Alert.showAlert("(1) Products (2) Clients (3) Shop (4) Print (5) Exit", ConsoleColor.DarkYellow);
+                Alert.showAlert("(1) Products (2) Clients (3) Shop (4) Print (5) Exit", ConsoleColor.DarkBlue);
                 Console.Write("\n");
                 Console.Write("\n\tWhat you want to do? ");
                 opt = char.Parse(Console.ReadLine());
@@ -41,7 +43,8 @@ namespace Oreo.View
                         break;
                     case '5':
                         start = 0;
-                        Alert.showAlert("Thanks for using this app <(*w*<)", ConsoleColor.DarkGreen);
+                        Console.Write("\n");
+                        Alert.showAlert("Thanks for using this app... bye ! <(*w*<)", ConsoleColor.DarkGreen);
                         break;
                 }
             } while (start ==1);
@@ -65,11 +68,12 @@ namespace Oreo.View
             do
             {
                 char opt = '0';
+                Console.Clear();
                 Console.Write("\n");
-                Alert.showMessage($"==================================================", ConsoleColor.DarkYellow);
-                Alert.showMessage($"                   Products", ConsoleColor.DarkMagenta);
+                Alert.showMessage($"================================================================", ConsoleColor.DarkBlue);
+                Alert.showMessage($"                            Products", ConsoleColor.DarkMagenta);
                 Console.Write("\n");
-                Alert.showAlert("(1) Create (2) Read (3) Update (4) Delete (5) Exit", ConsoleColor.DarkYellow);
+                Alert.showAlert("(1) Create (2) Search (3) Catalog (5) Update (5) Delete (6) Exit", ConsoleColor.DarkBlue);
                 Console.Write("\n");
                 Console.Write("\n\tWhat you want to do? ");
                 opt = char.Parse(Console.ReadLine());
@@ -78,48 +82,108 @@ namespace Oreo.View
                     case '1':
                         try
                         {
+                            Console.Clear();
+                            Console.Write("\n");
+                            Alert.showAlert("       Create Product      ", ConsoleColor.DarkMagenta);
+                            Console.Write("\n");
                             ProductCtrl.CreateProduct(Product.getAllInfo());
+                            Console.Write("\n");
+                            Console.Write("\n\tPress enter to continue... ");
+                            Console.ReadLine();
                         }
                         catch (ApplicationException error)
                         {
                             Alert.showAlert(error.Message, ConsoleColor.Red);
+                            Console.Write("\n");
+                            Console.Write("\n\tPress enter to continue... ");
+                            Console.ReadLine();
                             InitializeApp();
                         }
                         break;
                     case '2':
                         try
                         {
+                            Console.Write("\n");
+                            Alert.showAlert("      Search Product     ", ConsoleColor.DarkMagenta);
+                            Console.Write("\n");
                             ProductCtrl.ReadProduct(Product.getId().Id);
+                            Console.Write("\n");
+                            Console.Write("\n\tPress enter to continue... ");
+                            Console.ReadLine();
                         }
                         catch (ApplicationException error)
                         {
                             Alert.showAlert(error.Message, ConsoleColor.Red);
+                            Console.Write("\n");
+                            Console.Write("\n\tPress enter to continue... ");
+                            Console.ReadLine();
                             InitializeApp();
                         }
                         break;
                     case '3':
                         try
                         {
-                            ProductCtrl.UpdateProduct(Product.getAllInfo());
+                            Console.Clear();
+                            ProductCtrl.ReadAllProducts();
+                            Console.Write("\n");
+                            Console.Write("\n\tPress enter to continue... ");
+                            Console.ReadLine();
+                            Console.Clear();
+                            break;
+
                         }
                         catch (ApplicationException error)
                         {
                             Alert.showAlert(error.Message, ConsoleColor.Red);
+                            Console.Write("\n");
+                            Console.Write("\n\tPress enter to continue... ");
+                            Console.ReadLine();
                             InitializeApp();
                         }
                         break;
                     case '4':
                         try
                         {
-                            ProductCtrl.DeleteProduct(Product.getId().Id);
+                            Console.Clear();
+                            Console.Write("\n");
+                            Alert.showAlert("       Update Product      ", ConsoleColor.DarkMagenta);
+                            Console.Write("\n");
+                            ProductCtrl.UpdateProduct(Product.getAllInfo());
+                            Console.Write("\n");
+                            Console.Write("\n\tPress enter to continue... ");
+                            Console.ReadLine();
                         }
                         catch (ApplicationException error)
                         {
                             Alert.showAlert(error.Message, ConsoleColor.Red);
+                            Console.Write("\n");
+                            Console.Write("\n\tPress enter to continue... ");
+                            Console.ReadLine();
                             InitializeApp();
                         }
                         break;
                     case '5':
+                        try
+                        {
+                            Console.Clear();
+                            Console.Write("\n");
+                            Alert.showAlert("       Delete Product      ", ConsoleColor.DarkMagenta);
+                            Console.Write("\n");
+                            ProductCtrl.DeleteProduct(Product.getId().Id);
+                            Console.Write("\n");
+                            Console.Write("\n\tPress enter to continue... ");
+                            Console.ReadLine();
+                        }
+                        catch (ApplicationException error)
+                        {
+                            Alert.showAlert(error.Message, ConsoleColor.Red);
+                            Console.Write("\n");
+                            Console.Write("\n\tPress enter to continue... ");
+                            Console.ReadLine();
+                            InitializeApp();
+                        }
+                        break;
+                    case '6':
                         start = 0;
                         break;
                 }
@@ -132,11 +196,12 @@ namespace Oreo.View
             do
             {
                 char opt = '0';
+                Console.Clear();
                 Console.Write("\n");
-                Alert.showMessage($"==================================================", ConsoleColor.DarkYellow);
-                Alert.showMessage($"                   Clients", ConsoleColor.DarkMagenta);
+                Alert.showMessage($"================================================================", ConsoleColor.DarkBlue);
+                Alert.showMessage($"                             Clients", ConsoleColor.DarkMagenta);
                 Console.Write("\n");
-                Alert.showAlert("(1) Create (2) Read (3) Update (4) Delete (5) Exit", ConsoleColor.DarkYellow);
+                Alert.showAlert("(1) Create (2) Search (3) Catalog (4) Update (5) Delete (6) Exit", ConsoleColor.DarkBlue);
                 Console.Write("\n");
                 Console.Write("\n\tWhat you want to do? ");
                 opt = char.Parse(Console.ReadLine());
@@ -145,48 +210,108 @@ namespace Oreo.View
                     case '1':
                         try
                         {
+                            Console.Clear();
+                            Console.Write("\n");
+                            Alert.showAlert("       Create Client      ", ConsoleColor.DarkMagenta);
+                            Console.Write("\n");
                             EmployeeCtrl.CreateEmployee(Employee.getAllInfo());
+                            Console.Write("\n");
+                            Console.Write("\n\tPress enter to continue... ");
+                            Console.ReadLine();
                         }
                         catch (ApplicationException error)
                         {
                             Alert.showAlert(error.Message, ConsoleColor.Red);
+                            Console.Write("\n");
+                            Console.Write("\n\tPress enter to continue... ");
+                            Console.ReadLine();
                             InitializeApp();
                         }
                         break;
                     case '2':
                         try
                         {
+                            Console.Clear();
+                            Console.Write("\n");
+                            Alert.showAlert("       Search Client       ", ConsoleColor.DarkMagenta);
+                            Console.Write("\n");
                             EmployeeCtrl.ReadEmployee(Employee.getDocument().Document);
+                            Console.Write("\n");
+                            Console.Write("\n\tPress enter to continue... ");
+                            Console.ReadLine();
                         }
                         catch (ApplicationException error)
                         {
                             Alert.showAlert(error.Message, ConsoleColor.Red);
+                            Console.Write("\n");
+                            Console.Write("\n\tPress enter to continue... ");
+                            Console.ReadLine();
                             InitializeApp();
                         }
                         break;
                     case '3':
                         try
                         {
-                            EmployeeCtrl.UpdateEmployee(Employee.getAllInfo());
+                            Console.Clear();
+                            EmployeeCtrl.ReadAllEmployees();
+                            Console.Write("\n");
+                            Console.Write("\n\tPress enter to continue... ");
+                            Console.ReadLine();
+                            Console.Clear();
+                            break;
                         }
                         catch (ApplicationException error)
                         {
                             Alert.showAlert(error.Message, ConsoleColor.Red);
+                            Console.Write("\n");
+                            Console.Write("\n\tPress enter to continue... ");
+                            Console.ReadLine();
                             InitializeApp();
                         }
                         break;
                     case '4':
                         try
                         {
-                            EmployeeCtrl.DeleteEmployee(Employee.getDocument().Document);
+                            Console.Clear();
+                            Console.Write("\n");
+                            Alert.showAlert("       Update Client       ", ConsoleColor.DarkMagenta);
+                            Console.Write("\n");
+                            EmployeeCtrl.UpdateEmployee(Employee.getAllInfo());
+                            Console.Write("\n");
+                            Console.Write("\n\tPress enter to continue... ");
+                            Console.ReadLine();
                         }
                         catch (ApplicationException error)
                         {
                             Alert.showAlert(error.Message, ConsoleColor.Red);
+                            Console.Write("\n");
+                            Console.Write("\n\tPress enter to continue... ");
+                            Console.ReadLine();
                             InitializeApp();
                         }
                         break;
                     case '5':
+                        try
+                        {
+                            Console.Clear();
+                            Console.Write("\n");
+                            Alert.showAlert("       Delete Client      ", ConsoleColor.DarkMagenta);
+                            Console.Write("\n");
+                            EmployeeCtrl.DeleteEmployee(Employee.getDocument().Document);
+                            Console.Write("\n");
+                            Console.Write("\n\tPress enter to continue... ");
+                            Console.ReadLine();
+                        }
+                        catch (ApplicationException error)
+                        {
+                            Alert.showAlert(error.Message, ConsoleColor.Red);
+                            Console.Write("\n");
+                            Console.Write("\n\tPress enter to continue... ");
+                            Console.ReadLine();
+                            InitializeApp();
+                        }
+                        break;
+                    case '6':
                         start = 0;
                         break;
                 }
@@ -195,15 +320,15 @@ namespace Oreo.View
 
         public static void Welcome()
         {
-            Alert.showAlert("Welcome to Cookie Factory! =)", ConsoleColor.DarkRed);
+            Alert.showAlert("Welcome to Cookie Factory! =)", ConsoleColor.DarkBlue);
             Alert.showMessage($"====================", ConsoleColor.DarkMagenta);
-            Alert.showMessage($"                       _/0\\/ \\_", ConsoleColor.DarkBlue);
-            Alert.showMessage($"              .-.   .-` \\_/\\0/ '-.", ConsoleColor.DarkBlue);
-            Alert.showMessage($"             /:::\\ / ,_________,  \\", ConsoleColor.DarkBlue);
-            Alert.showMessage($"            /\\:::/ \\  '. (:::/  `'-;", ConsoleColor.DarkBlue);
-            Alert.showMessage($"            \\ `-'`\\ '._ `\"'\"'\\__    \\", ConsoleColor.DarkBlue);
-            Alert.showMessage($"             `'-.  \\   `)-=-=(  `,   |", ConsoleColor.DarkBlue);
-            Alert.showMessage($"                 \\  `-\"`      `\"-`   /         Satan", ConsoleColor.DarkBlue);
+            Alert.showMessage($"                       _/0\\/ \\_", ConsoleColor.DarkCyan);
+            Alert.showMessage($"              .-.   .-` \\_/\\0/ '-.", ConsoleColor.DarkCyan);
+            Alert.showMessage($"             /:::\\ / ,_________,  \\", ConsoleColor.DarkCyan);
+            Alert.showMessage($"            /\\:::/ \\  '. (:::/  `'-;", ConsoleColor.DarkCyan);
+            Alert.showMessage($"            \\ `-'`\\ '._ `\"'\"'\\__    \\", ConsoleColor.DarkCyan);
+            Alert.showMessage($"             `'-.  \\   `)-=-=(  `,   |", ConsoleColor.DarkCyan);
+            Alert.showMessage($"                 \\  `-\"`      `\"-`   /         Satan", ConsoleColor.DarkCyan);
             Alert.showMessage($"====================================================", ConsoleColor.DarkMagenta);
         }
     }

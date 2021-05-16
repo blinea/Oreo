@@ -17,10 +17,10 @@ namespace Oreo.Controller
                 SqlCommand com = new SqlCommand();
                 com.Connection = ProyectConnection.conn;
 
-                com.CommandText = "insert into Employee(Document, Name, Salary) values (@doc, @name, @sal);";
+                com.CommandText = "insert into Employee(Document, Name, Address) values (@doc, @name, @add);";
                 com.Parameters.AddWithValue("doc", newEmployee.Document);
                 com.Parameters.AddWithValue("name", newEmployee.Name);
-                com.Parameters.AddWithValue("sal", newEmployee.Salary);
+                com.Parameters.AddWithValue("add", newEmployee.Address);
                 com.ExecuteNonQuery();
 
                 Alert.showAlert("Client Saved on Database.", ConsoleColor.Green);
@@ -41,7 +41,7 @@ namespace Oreo.Controller
 
             string xdoc = documment;
 
-            com.CommandText = "select Name, Salary from Employee where Document = (@doc);";
+            com.CommandText = "select Name, Address from Employee where Document = (@doc);";
             com.Parameters.AddWithValue("doc", xdoc);
 
             try
@@ -49,8 +49,11 @@ namespace Oreo.Controller
                 SqlDataReader register = com.ExecuteReader();
                 if (register.Read())
                 {
+                    Console.Write("\n");
+                    Alert.showMessage($"Client Found", ConsoleColor.Blue);
+                    Alert.showMessage($"---------------------------------------", ConsoleColor.Blue);
                     Alert.showMessage($"Name: {register["Name"]}", ConsoleColor.Blue);
-                    Alert.showMessage($"Salary: {register["Salary"]}", ConsoleColor.Blue);
+                    Alert.showMessage($"Address: {register["Address"]}", ConsoleColor.Blue);
                 }
                 else
                 {
@@ -63,6 +66,28 @@ namespace Oreo.Controller
             }
         }
 
+        public static void ReadAllEmployees ()
+        {
+            ProyectConnection NewConnection = new ProyectConnection();
+            NewConnection.ConnectToday();
+
+            SqlCommand com = new SqlCommand();
+            com.Connection = ProyectConnection.conn;
+
+            com.CommandText = "select Document, Name, Address from Employee";
+            SqlDataReader register = com.ExecuteReader();
+            Console.Write("\n");
+            Alert.showAlert("       Client Database.     ", ConsoleColor.DarkCyan);
+            Console.Write("\n");
+            while (register.Read())
+            {
+                Alert.showMessage($"----------------------------", ConsoleColor.DarkCyan);
+                Alert.showMessage($"Document: {register["Document"]}", ConsoleColor.Blue);
+                Alert.showMessage($"Name: {register["Name"]}", ConsoleColor.Blue);
+                Alert.showMessage($"Address: {register["Address"]}", ConsoleColor.Blue);
+            }
+        }
+
         public static void UpdateEmployee(Employee updatedEmployee)
         {
             ProyectConnection NewConnection = new ProyectConnection();
@@ -71,9 +96,9 @@ namespace Oreo.Controller
             SqlCommand com = new SqlCommand();
             com.Connection = ProyectConnection.conn;
 
-            com.CommandText = "update Employee set Name=(@name), Salary=(@sal) where Document=(@doc)";
+            com.CommandText = "update Employee set Name=(@name), Address=(@add) where Document=(@doc)";
             com.Parameters.AddWithValue("name", updatedEmployee.Name);
-            com.Parameters.AddWithValue("sal", updatedEmployee.Salary);
+            com.Parameters.AddWithValue("add", updatedEmployee.Address);
             com.Parameters.AddWithValue("doc", updatedEmployee.Document);
 
             int cant;

@@ -54,6 +54,9 @@ namespace Oreo.Controller
                 SqlDataReader register = com.ExecuteReader();
                 if (register.Read())
                 {
+                    Console.Write("\n");
+                    Alert.showMessage($"Product Found", ConsoleColor.Blue);
+                    Alert.showMessage($"---------------------------------------", ConsoleColor.Blue);
                     Alert.showMessage($"ID: {register["Id"]}", ConsoleColor.Blue);
                     Alert.showMessage($"Name: {register["Name"]}", ConsoleColor.Blue);
                     Alert.showMessage($"Category: {register["Category"]}", ConsoleColor.Blue);
@@ -80,9 +83,11 @@ namespace Oreo.Controller
             SqlCommand com = new SqlCommand();
             com.Connection = ProyectConnection.conn;
 
-            List<Product> products = new List<Product>();
             com.CommandText = "select Id, Name, Category, Price, Description, Quantity from Product";
             SqlDataReader register = com.ExecuteReader();
+            Console.Write("\n");
+            Alert.showAlert("      Product Database.     ", ConsoleColor.DarkCyan);
+            Console.Write("\n");
             while (register.Read())
             {
                 Alert.showMessage($"----------------------------", ConsoleColor.DarkCyan);

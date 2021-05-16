@@ -8,7 +8,7 @@ namespace Oreo.Model
     {
         private string _document;
         private string _name;
-        private decimal _salary;
+        private string _adress;
 
         public string Document
         {
@@ -42,18 +42,18 @@ namespace Oreo.Model
             }
         }
 
-        public decimal Salary
+        public string Address
         {
-            get { return _salary; }
+            get { return _adress; }
             set
             {
-                if (value > 0 && value < 100000000)
+                if (!string.IsNullOrEmpty(value) || !string.IsNullOrWhiteSpace(value))
                 {
-                    _salary = value;
+                    _adress = value;
                 }
                 else
                 {
-                    throw new ApplicationException("Invalid Client Salary");
+                    throw new ApplicationException("Invalid Client Name.");
                 }
             }
         }
@@ -63,19 +63,19 @@ namespace Oreo.Model
         public static Employee getAllInfo()
         {
             Employee Employee = new Employee();
-            Console.Write("\n\tEscribe su documento: ");
+            Console.Write("\n\tClient Document: ");
             Employee.Document = Console.ReadLine();
-            Console.Write("\tEscribe su nombre: ");
+            Console.Write("\tClient Name: ");
             Employee.Name = Console.ReadLine();
-            Console.Write("\tEscribe su sueldo: ");
-            Employee.Salary = decimal.Parse(Console.ReadLine());
+            Console.Write("\tClient Address: ");
+            Employee.Address = Console.ReadLine();
             return Employee;
         }
 
         public static Employee getDocument()
         {
             Employee Employee = new Employee();
-            Console.Write("\n\tEscribe su documento: ");
+            Console.Write("\n\tWrite Client Document: ");
             Employee.Document = Console.ReadLine();
             return Employee;
         }
