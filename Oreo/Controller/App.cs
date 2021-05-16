@@ -44,6 +44,7 @@ namespace Oreo.Controller
         public static void LaunchShopMenu()
         {
             Console.Clear();
+            Banner.ShowBanner("Product Catalog");
             ProductCtrl.ReadAllProducts();
             Alert.Confirmation();
 
@@ -52,7 +53,8 @@ namespace Oreo.Controller
         public static void LaunchPrintMenu()
         {
             Console.Clear();
-            Alert.showAlert("XD", ConsoleColor.Red);
+            Banner.ShowBanner("    Print    ");
+            Alert.showAlert("  Print Mode Enabled  ", ConsoleColor.Red);
             Alert.Confirmation();
         }
 
