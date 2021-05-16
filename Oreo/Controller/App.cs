@@ -31,7 +31,7 @@ namespace Oreo.Controller
                         LaunchShopMenu();
                         break;
                     case '4':
-                        //LaunchPrintMenu();
+                        LaunchPrintMenu();
                         break;
                     case '5':
                         start = 0;
@@ -45,10 +45,15 @@ namespace Oreo.Controller
         {
             Console.Clear();
             ProductCtrl.ReadAllProducts();
-            Console.Write("\n");
-            Console.Write("\n\tEnter Product ID: ");
-            int opt = char.Parse(Console.ReadLine());
+            Alert.Confirmation();
 
+        }
+
+        public static void LaunchPrintMenu()
+        {
+            Console.Clear();
+            Alert.showAlert("XD", ConsoleColor.Red);
+            Alert.Confirmation();
         }
 
     }
