@@ -7,6 +7,7 @@ namespace Oreo
     {
         static void Main(string[] args)
         {
+            App.Welcome();
             App.InitializeApp();
         }
     }

@@ -21,7 +21,7 @@ namespace Oreo.Model
                 }
                 else
                 {
-                    throw new ApplicationException("El documento debe tener un valor valido.");
+                    throw new ApplicationException("Invalid Client Document.");
                 }
             }
         }
@@ -37,7 +37,7 @@ namespace Oreo.Model
                 }
                 else
                 {
-                    throw new ApplicationException("El nombre debe tener un valor valido.");
+                    throw new ApplicationException("Invalid Client Name.");
                 }
             }
         }
@@ -53,7 +53,7 @@ namespace Oreo.Model
                 }
                 else
                 {
-                    throw new ApplicationException("La cantidad de salario debe ser una cantidad correcta");
+                    throw new ApplicationException("Invalid Client Salary");
                 }
             }
         }
