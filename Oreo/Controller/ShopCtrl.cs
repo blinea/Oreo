@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Oreo.Controller;
 using System.Data.SqlClient;
 using Oreo.View;
 using Oreo.Model;
@@ -35,7 +32,7 @@ namespace Oreo.Controller
 
                     using (StreamWriter sr = File.AppendText(path))
                     {
-                        sr.WriteLine("User ID: " + user + " - " + myProduct.ToString2());
+                        sr.WriteLine(myProduct.ToString2());
                         sr.Close();
                     }
                 }
@@ -63,7 +60,7 @@ namespace Oreo.Controller
                 {
                     if (!string.IsNullOrEmpty(s) || !string.IsNullOrWhiteSpace(s))
                     {
-                        Alert.ShowMessage("-------------------------------------------------------------------------------------------", ConsoleColor.DarkCyan);
+                        Alert.ShowMessage("------------------------------------------------------------------------------", ConsoleColor.DarkCyan);
                         Alert.ShowMessage(count + "|" + s, ConsoleColor.DarkGreen);
                         count++;
                     }

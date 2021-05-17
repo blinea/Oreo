@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Oreo.View
 {
@@ -50,6 +48,7 @@ namespace Oreo.View
 
         public static void Bye()
         {
+            Console.Clear();
             Console.Write("\n");
             Alert.ShowAlert("     Thanks for using this app... bye ! <(*w*<)     ", ConsoleColor.DarkGreen);
             Console.Write("\n");

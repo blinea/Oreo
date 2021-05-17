@@ -1,26 +1,31 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Oreo.Model;
-using Oreo.Controller;
-using Oreo.View;
 
 namespace Oreo.View
 {
     class App
     {
+        enum Options
+        {
+            Default = 0,
+            Products = 1,
+            Employees = 2,
+            Shop = 3,
+            Print = 4,
+            Exit = 5
+        }
+
         public static void InitializeApp()
         {
-            int start = 1;
+            bool start = true;
             do
             {               
-                char option = '0';
+                int option = (int)Options.Default;
                 Console.Clear();
                 Alert.Welcome();
                 Banner.ShowMainMenu();              
                 try
                 {
-                    option = char.Parse(Console.ReadLine());
+                    option = int.Parse(Console.ReadLine());
                 }
                 catch (Exception)
                 {
@@ -29,50 +34,24 @@ namespace Oreo.View
                 }
                 switch (option)
                 {
-                    case '1':
+                    case (int)Options.Products:
                         ProductMenu.LaunchProductMenu();
                         break;
-                    case '2':
+                    case (int)Options.Employees:
                         EmployeeMenu.LaunchEmployeeMenu();
                         break;
-                    case '3':
-                        Login();
+                    case (int)Options.Shop:
+                        UtilityMenu.Login();
                         break;
-                    case '4':
-                        LaunchPrintMenu();
+                    case (int)Options.Print:
+                        UtilityMenu.LaunchPrintMenu();
                         break;
-                    case '5':
-                        start = 0;
+                    case (int)Options.Exit:
+                        start = false;
                         Alert.Bye();
                         break;
                 }
-            } while (start ==1);      
+            } while (start);      
         }
-
-        public static void Login()
-        {
-
-            string userId = Employee.GetDocument().Document;
-
-            if (EmployeeCtrl.SearchEmployeeDocument(userId))
-            {
-                Shop.LaunchShopMenu(userId);
-            }
-            else
-            {
-                Alert.ShowAlert("User doesn't exist on database", ConsoleColor.DarkRed);
-                Alert.Confirmation();
-            }
-                         
-        }
-
-        public static void LaunchPrintMenu()
-        {
-            Console.Clear();
-            Banner.ShowBanner("    Print    ");
-            Alert.ShowAlert("  Print Mode Enabled  ", ConsoleColor.Red);
-            Alert.Confirmation();
-        }
-
     }
 }

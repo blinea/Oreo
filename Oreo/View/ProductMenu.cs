@@ -1,24 +1,32 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using Oreo.Controller;
 using Oreo.Model;
-using Oreo.View;
+
 
 namespace Oreo.View
 {
     class ProductMenu
     {
+        enum Options
+        {
+            Default = 0,
+            Create = 1,
+            Search = 2,
+            Catalog = 3,
+            Update = 4,
+            Delete = 5,
+            Exit = 6
+        }
         public static void LaunchProductMenu()
         {
-            int start = 1;
+            bool start = true;
             do
             {
-                char option = '0';
+                int option = (int)Options.Default;
                 Banner.ShowBigBanner("Products");
                 try
                 {
-                    option = char.Parse(Console.ReadLine());
+                    option = int.Parse(Console.ReadLine());
                 }
                 catch (Exception)
                 {
@@ -27,7 +35,7 @@ namespace Oreo.View
                 }
                 switch (option)
                 {
-                    case '1':
+                    case (int)Options.Create:
                         try
                         {
                             Banner.ShowBanner("Create Product");
@@ -41,7 +49,7 @@ namespace Oreo.View
                             App.InitializeApp();
                         }
                         break;
-                    case '2':
+                    case (int)Options.Search:
                         try
                         {
                             Banner.ShowBanner("Search Product");
@@ -55,7 +63,7 @@ namespace Oreo.View
                             App.InitializeApp();
                         }
                         break;
-                    case '3':
+                    case (int)Options.Catalog:
                         try
                         {
                             Banner.ShowBanner("Product Database");
@@ -70,7 +78,7 @@ namespace Oreo.View
                             App.InitializeApp();
                         }
                         break;
-                    case '4':
+                    case (int)Options.Update:
                         try
                         {
                             Banner.ShowBanner("Update Product");
@@ -84,7 +92,7 @@ namespace Oreo.View
                             App.InitializeApp();
                         }
                         break;
-                    case '5':
+                    case (int)Options.Delete:
                         try
                         {
                             Banner.ShowBanner("Delete Product");
@@ -98,11 +106,11 @@ namespace Oreo.View
                             App.InitializeApp();
                         }
                         break;
-                    case '6':
-                        start = 0;
+                    case (int)Options.Exit:
+                        start = false;
                         break;
                 }
-            } while (start == 1);
+            } while (start);
         }
     }
 }

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using Oreo.View;
 
 namespace Oreo.Model
@@ -162,7 +160,15 @@ namespace Oreo.Model
         {
             Product Product = new Product();
             Console.Write("\n\tProduct id: ");
-            Product.Id = int.Parse(Console.ReadLine());
+            try
+            {
+                Product.Id = int.Parse(Console.ReadLine());
+            }
+            catch (Exception)
+            {
+                Alert.ShowAlert("Incorrect ID.", ConsoleColor.Red);
+            }
+            
             return Product;
         }
     }
