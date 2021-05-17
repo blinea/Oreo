@@ -4,16 +4,16 @@ namespace Oreo.Model
 {
     struct Order
     {
-        private string _id;
-        private string _clientDocument;
+        public int _id;
+        public string _clientDocument;
         //private string _productId;
 
-        public string Id
+        public int Id
         {
             get { return _id; }
             set
             {
-                if (!string.IsNullOrEmpty(value) || !string.IsNullOrWhiteSpace(value))
+                if (value > 0 && value < 1000000000)
                 {
                     _id = value;
                 }
@@ -56,7 +56,7 @@ namespace Oreo.Model
             }
         }
         */
-        public Order(string id, string clientDocument)
+        public Order(int id, string clientDocument)
         {
             _id = id;
             _clientDocument = clientDocument;
