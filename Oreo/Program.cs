@@ -1,5 +1,5 @@
 ﻿using System;
-using Oreo.Controller;
+using Oreo.View;
 
 namespace Oreo
 {

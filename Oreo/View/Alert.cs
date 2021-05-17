@@ -6,7 +6,7 @@ namespace Oreo.View
 {
     class Alert
     {
-        public static void showAlert(string Message, ConsoleColor Color)
+        public static void ShowAlert(string Message, ConsoleColor Color)
         {
             Console.ForegroundColor = Color;
             string line = "\t";
@@ -20,7 +20,7 @@ namespace Oreo.View
             Console.ForegroundColor = ConsoleColor.Gray;
         }
 
-        public static void showMessage(string Message, ConsoleColor Color)
+        public static void ShowMessage(string Message, ConsoleColor Color)
         {
             Console.ForegroundColor = Color;
             System.Console.WriteLine($"\t{Message}");
@@ -36,22 +36,22 @@ namespace Oreo.View
 
         public static void Welcome()
         {
-            Alert.showAlert("Welcome to Cookie Factory! =)", ConsoleColor.DarkBlue);
-            Alert.showMessage($"====================", ConsoleColor.DarkMagenta);
-            Alert.showMessage($"                       _/0\\/ \\_", ConsoleColor.DarkCyan);
-            Alert.showMessage($"              .-.   .-` \\_/\\0/ '-.", ConsoleColor.DarkCyan);
-            Alert.showMessage($"             /:::\\ / ,_________,  \\", ConsoleColor.DarkCyan);
-            Alert.showMessage($"            /\\:::/ \\  '. (:::/  `'-;", ConsoleColor.DarkCyan);
-            Alert.showMessage($"            \\ `-'`\\ '._ `\"'\"'\\__    \\", ConsoleColor.DarkCyan);
-            Alert.showMessage($"             `'-.  \\   `)-=-=(  `,   |", ConsoleColor.DarkCyan);
-            Alert.showMessage($"                 \\  `-\"`      `\"-`   /         Satan", ConsoleColor.DarkCyan);
-            Alert.showMessage($"====================================================", ConsoleColor.DarkMagenta);
+            Alert.ShowAlert("Welcome to Cookie Factory! =)", ConsoleColor.DarkBlue);
+            Alert.ShowMessage($"====================", ConsoleColor.DarkMagenta);
+            Alert.ShowMessage($"                       _/0\\/ \\_", ConsoleColor.DarkCyan);
+            Alert.ShowMessage($"              .-.   .-` \\_/\\0/ '-.", ConsoleColor.DarkCyan);
+            Alert.ShowMessage($"             /:::\\ / ,_________,  \\", ConsoleColor.DarkCyan);
+            Alert.ShowMessage($"            /\\:::/ \\  '. (:::/  `'-;", ConsoleColor.DarkCyan);
+            Alert.ShowMessage($"            \\ `-'`\\ '._ `\"'\"'\\__    \\", ConsoleColor.DarkCyan);
+            Alert.ShowMessage($"             `'-.  \\   `)-=-=(  `,   |", ConsoleColor.DarkCyan);
+            Alert.ShowMessage($"                 \\  `-\"`      `\"-`   /         Satan", ConsoleColor.DarkCyan);
+            Alert.ShowMessage($"====================================================", ConsoleColor.DarkMagenta);
         }
 
         public static void Bye()
         {
             Console.Write("\n");
-            Alert.showAlert("Thanks for using this app... bye ! <(*w*<)", ConsoleColor.DarkGreen);
+            Alert.ShowAlert("     Thanks for using this app... bye ! <(*w*<)     ", ConsoleColor.DarkGreen);
             Console.Write("\n");
         }
     }

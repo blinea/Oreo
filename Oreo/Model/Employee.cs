@@ -58,9 +58,21 @@ namespace Oreo.Model
             }
         }
 
-        //----------------------------------------------------------------------------------------------------------------
+        public Employee(string document, string name, string address)
+        {
+            _document = document;
+            _name = name;
+            _adress = address; 
+        }
 
-        public static Employee getAllInfo()
+        public Employee() {}
+
+        public override string ToString()
+        {
+            return "Client Document= " + _document + ", Name= " + _name + ", Address= " + _adress;
+        }
+
+        public static Employee GetAllInfo()
         {
             Employee Employee = new Employee();
             Console.Write("\n\tClient Document: ");
@@ -72,7 +84,7 @@ namespace Oreo.Model
             return Employee;
         }
 
-        public static Employee getDocument()
+        public static Employee GetDocument()
         {
             Employee Employee = new Employee();
             Console.Write("\n\tWrite Client Document: ");

@@ -1,0 +1,2 @@
+User ID: 100 - | Product Id = 1 | Name = Oreo | Price = 600 | Description = 600gr|
+User ID: 100 - | Product Id = 2 | Name = Triton | Price = 500 | Description = 400gr|

@@ -5,30 +5,38 @@ using Oreo.Controller;
 using Oreo.Model;
 using Oreo.View;
 
-namespace Oreo.Controller
+namespace Oreo.View
 {
-    class ProductMenu
+    class EmployeeMenu
     {
-        public static void LaunchProductMenu()
+        public static void LaunchEmployeeMenu()
         {
             int start = 1;
             do
             {
                 char option = '0';
-                Banner.ShowBigBanner("Products");
-                option = char.Parse(Console.ReadLine());
+                Banner.ShowBigBanner("Clients");
+                try
+                {
+                    option = char.Parse(Console.ReadLine());
+                }
+                catch (Exception)
+                {
+                    Alert.ShowAlert("Please type a valid Option", ConsoleColor.Red);
+                    Alert.Confirmation();
+                }
                 switch (option)
                 {
                     case '1':
                         try
                         {
-                            Banner.ShowBanner("Create Product");
-                            ProductCtrl.CreateProduct(Product.getAllInfo());
+                            Banner.ShowBanner("Create Client");
+                            EmployeeCtrl.CreateEmployee(Employee.GetAllInfo());
                             Alert.Confirmation();
                         }
                         catch (ApplicationException error)
                         {
-                            Alert.showAlert(error.Message, ConsoleColor.Red);
+                            Alert.ShowAlert(error.Message, ConsoleColor.Red);
                             Alert.Confirmation();
                             App.InitializeApp();
                         }
@@ -36,13 +44,13 @@ namespace Oreo.Controller
                     case '2':
                         try
                         {
-                            Banner.ShowBanner("Search Product");
-                            ProductCtrl.ReadProduct(Product.getId().Id);
+                            Banner.ShowBanner("Search Client");
+                            EmployeeCtrl.ReadEmployee(Employee.GetDocument().Document);
                             Alert.Confirmation();
                         }
                         catch (ApplicationException error)
                         {
-                            Alert.showAlert(error.Message, ConsoleColor.Red);
+                            Alert.ShowAlert(error.Message, ConsoleColor.Red);
                             Alert.Confirmation();
                             App.InitializeApp();
                         }
@@ -50,15 +58,14 @@ namespace Oreo.Controller
                     case '3':
                         try
                         {
-                            Banner.ShowBanner("Product Database");
-                            ProductCtrl.ReadAllProducts();
+                            Banner.ShowBanner("Client Database");
+                            EmployeeCtrl.ReadAllEmployees();
                             Alert.Confirmation();
                             break;
-
                         }
                         catch (ApplicationException error)
                         {
-                            Alert.showAlert(error.Message, ConsoleColor.Red);
+                            Alert.ShowAlert(error.Message, ConsoleColor.Red);
                             Alert.Confirmation();
                             App.InitializeApp();
                         }
@@ -66,13 +73,13 @@ namespace Oreo.Controller
                     case '4':
                         try
                         {
-                            Banner.ShowBanner("Update Product");
-                            ProductCtrl.UpdateProduct(Product.getAllInfo());
+                            Banner.ShowBanner("Search Client");
+                            EmployeeCtrl.UpdateEmployee(Employee.GetAllInfo());
                             Alert.Confirmation();
                         }
                         catch (ApplicationException error)
                         {
-                            Alert.showAlert(error.Message, ConsoleColor.Red);
+                            Alert.ShowAlert(error.Message, ConsoleColor.Red);
                             Alert.Confirmation();
                             App.InitializeApp();
                         }
@@ -80,13 +87,13 @@ namespace Oreo.Controller
                     case '5':
                         try
                         {
-                            Banner.ShowBanner("Delete Product");
-                            ProductCtrl.DeleteProduct(Product.getId().Id);
+                            Banner.ShowBanner("Delete Client");
+                            EmployeeCtrl.DeleteEmployee(Employee.GetDocument().Document);
                             Alert.Confirmation();
                         }
                         catch (ApplicationException error)
                         {
-                            Alert.showAlert(error.Message, ConsoleColor.Red);
+                            Alert.ShowAlert(error.Message, ConsoleColor.Red);
                             Alert.Confirmation();
                             App.InitializeApp();
                         }

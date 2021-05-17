@@ -110,9 +110,37 @@ namespace Oreo.Model
             }
         }
 
-        //----------------------------------------------------------------------------------------------------------------
+        public Product(int id, string name, string category, int price, string description, int quantity)
+        {
+            _id = id;
+            _name = name;
+            _category = category;
+            _price = price;
+            _description = description;
+            _quantity = quantity;
+        }
 
-        public static Product getAllInfo()
+        public Product(int id, string name, int price, string description)
+        {
+            _id = id;
+            _name = name;
+            _price = price;
+            _description = description;
+        }
+
+        public Product(){}
+
+        public override string ToString()
+        {
+            return "Product Id= " + _id + ", Name= " + _name + ", Category= " + _category + ", Price= " + _price + ", Description= " + _description + ", Quantity= " + _quantity;
+        }
+
+        public string ToString2()
+        {
+            return "| Product Id = " + _id + " | Name = " + _name + " | Price = " + _price + " | Description = " + _description + "|";
+        }
+
+        public static Product GetAllInfo()
         {
             Product Product = new Product();
             Console.Write("\n\tProduct ID: ");
@@ -130,13 +158,12 @@ namespace Oreo.Model
             return Product;
         }
 
-        public static Product getId()
+        public static Product GetId()
         {
             Product Product = new Product();
             Console.Write("\n\tProduct id: ");
             Product.Id = int.Parse(Console.ReadLine());
             return Product;
         }
-
     }
 }

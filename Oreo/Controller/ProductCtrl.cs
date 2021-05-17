@@ -4,6 +4,7 @@ using System.Text;
 using Oreo.Model;
 using Oreo.View;
 using System.Data.SqlClient;
+using System.IO;
 
 namespace Oreo.Controller
 {
@@ -15,10 +16,8 @@ namespace Oreo.Controller
             {
                 ProyectConnection NewConnection = new ProyectConnection();
                 NewConnection.ConnectToday();
-
                 SqlCommand com = new SqlCommand();
                 com.Connection = ProyectConnection.conn;
-
                 com.CommandText = "insert into Product(Id, Name, Category, Price, Description, Quantity) values (@id, @name, @cate, @price, @desc, @quan);";
                 com.Parameters.AddWithValue("id", newProduct.Id);
                 com.Parameters.AddWithValue("name", newProduct.Name);
@@ -27,51 +26,48 @@ namespace Oreo.Controller
                 com.Parameters.AddWithValue("desc", newProduct.Description);
                 com.Parameters.AddWithValue("quan", newProduct.Quantity);
                 com.ExecuteNonQuery();
-
-                Alert.showAlert("Product Saved on Database.", ConsoleColor.Green);
+                Alert.ShowAlert("Product Saved on Database.", ConsoleColor.Green);
             }
             catch (Exception)
             {
-                Alert.showAlert("Something is wrong, Product couldn't be saved.", ConsoleColor.Red);
+                Alert.ShowAlert("Something is wrong, Product couldn't be saved.", ConsoleColor.Red);
             }
         }
+
+        
 
         public static void ReadProduct(int id)
         {
             ProyectConnection NewConnection = new ProyectConnection();
             NewConnection.ConnectToday();
-
             SqlCommand com = new SqlCommand();
             com.Connection = ProyectConnection.conn;
-
             int xid = id;
-
             com.CommandText = "select Id, Name, Category, Price, Description, Quantity from Product where Id = (@id);";
             com.Parameters.AddWithValue("id", xid);
-
             try
             {
                 SqlDataReader register = com.ExecuteReader();
                 if (register.Read())
                 {
                     Console.Write("\n");
-                    Alert.showMessage($"Product Found", ConsoleColor.Blue);
-                    Alert.showMessage($"---------------------------------------", ConsoleColor.Blue);
-                    Alert.showMessage($"ID: {register["Id"]}", ConsoleColor.Blue);
-                    Alert.showMessage($"Name: {register["Name"]}", ConsoleColor.Blue);
-                    Alert.showMessage($"Category: {register["Category"]}", ConsoleColor.Blue);
-                    Alert.showMessage($"Price: {register["Price"]}", ConsoleColor.Blue);
-                    Alert.showMessage($"Description: {register["Description"]}", ConsoleColor.Blue);
-                    Alert.showMessage($"Quantity: {register["Quantity"]}", ConsoleColor.Blue);
+                    Alert.ShowMessage($"Product Found", ConsoleColor.Blue);
+                    Alert.ShowMessage($"---------------------------------------", ConsoleColor.Blue);
+                    Alert.ShowMessage($"ID: {register["Id"]}", ConsoleColor.Blue);
+                    Alert.ShowMessage($"Name: {register["Name"]}", ConsoleColor.Blue);
+                    Alert.ShowMessage($"Category: {register["Category"]}", ConsoleColor.Blue);
+                    Alert.ShowMessage($"Price: {register["Price"]}", ConsoleColor.Blue);
+                    Alert.ShowMessage($"Description: {register["Description"]}", ConsoleColor.Blue);
+                    Alert.ShowMessage($"Quantity: {register["Quantity"]}", ConsoleColor.Blue);
                 }
                 else
                 {
-                    Alert.showAlert("Product doesn't exist on database.", ConsoleColor.Red);
+                    Alert.ShowAlert("Product doesn't exist on database.", ConsoleColor.Red);
                 }
             }
             catch (Exception)
             {
-                Alert.showAlert("Database Error", ConsoleColor.Red);
+                Alert.ShowAlert("Database Error", ConsoleColor.Red);
             }
         }
 
@@ -79,20 +75,18 @@ namespace Oreo.Controller
         {
             ProyectConnection NewConnection = new ProyectConnection();
             NewConnection.ConnectToday();
-
             SqlCommand com = new SqlCommand();
             com.Connection = ProyectConnection.conn;
-
             com.CommandText = "select Id, Name, Category, Price, Description, Quantity from Product";
             SqlDataReader register = com.ExecuteReader();
             while (register.Read())
             {
-                Alert.showMessage($"----------------------------", ConsoleColor.DarkCyan);
-                Alert.showMessage($"ID: {register["Id"]}", ConsoleColor.Blue);
-                Alert.showMessage($"Name: {register["Name"]}", ConsoleColor.Blue);
+                Alert.ShowMessage($"----------------------------", ConsoleColor.DarkCyan);
+                Alert.ShowMessage($"ID: {register["Id"]}", ConsoleColor.Blue);
+                Alert.ShowMessage($"Name: {register["Name"]}", ConsoleColor.Blue);
                 //Alert.showMessage($"Category: {register["Category"]}", ConsoleColor.Blue);
-                Alert.showMessage($"Price: {register["Price"]}", ConsoleColor.Blue);
-                Alert.showMessage($"Description: {register["Description"]}", ConsoleColor.Blue);
+                Alert.ShowMessage($"Price: {register["Price"]}", ConsoleColor.Blue);
+                Alert.ShowMessage($"Description: {register["Description"]}", ConsoleColor.Blue);
                 //Alert.showMessage($"Quantity: {register["Quantity"]}", ConsoleColor.Blue);
             }
         }
@@ -101,10 +95,8 @@ namespace Oreo.Controller
         {
             ProyectConnection NewConnection = new ProyectConnection();
             NewConnection.ConnectToday();
-
             SqlCommand com = new SqlCommand();
             com.Connection = ProyectConnection.conn;
-
             com.CommandText = "update Product set Name=(@name), Category=(@cate), Price=(@price), Description=(@desc), Quantity=(@quan) where Id=(@id)";
             com.Parameters.AddWithValue("name", updatedProduct.Name);
             com.Parameters.AddWithValue("cate", updatedProduct.Category);
@@ -112,17 +104,15 @@ namespace Oreo.Controller
             com.Parameters.AddWithValue("desc", updatedProduct.Description);
             com.Parameters.AddWithValue("quan", updatedProduct.Quantity);
             com.Parameters.AddWithValue("id", updatedProduct.Id);
-
             int cant;
             cant = com.ExecuteNonQuery();
-
             if (cant == 1)
             {
-                Alert.showAlert("Product updated successfully.", ConsoleColor.Green);
+                Alert.ShowAlert("Product updated successfully.", ConsoleColor.Green);
             }
             else
             {
-                Alert.showAlert("Product doesn't exist on database.", ConsoleColor.Red);
+                Alert.ShowAlert("Product doesn't exist on database.", ConsoleColor.Red);
             }
         }
 
@@ -130,24 +120,19 @@ namespace Oreo.Controller
         {
             ProyectConnection NewConnection = new ProyectConnection();
             NewConnection.ConnectToday();
-
             SqlCommand com = new SqlCommand();
             com.Connection = ProyectConnection.conn;
-
             int xid = id;
-
             com.CommandText = "delete from Product where Id=(@id)";
             com.Parameters.AddWithValue("id", xid);
-
             if (com.ExecuteNonQuery() == 1)
             {
-                Alert.showAlert("Product deleted successfully.", ConsoleColor.Green);
+                Alert.ShowAlert("Product deleted successfully.", ConsoleColor.Green);
             }
             else
             {
-                Alert.showAlert("Product doesn't exist on database.", ConsoleColor.Red);
+                Alert.ShowAlert("Product doesn't exist on database.", ConsoleColor.Red);
             }
         }
-
     }
 }

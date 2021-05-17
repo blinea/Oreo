@@ -13,34 +13,60 @@ namespace Oreo.Controller
             {
                 ProyectConnection NewConnection = new ProyectConnection();
                 NewConnection.ConnectToday();
-
                 SqlCommand com = new SqlCommand();
                 com.Connection = ProyectConnection.conn;
-
                 com.CommandText = "insert into Employee(Document, Name, Address) values (@doc, @name, @add);";
                 com.Parameters.AddWithValue("doc", newEmployee.Document);
                 com.Parameters.AddWithValue("name", newEmployee.Name);
                 com.Parameters.AddWithValue("add", newEmployee.Address);
                 com.ExecuteNonQuery();
-
-                Alert.showAlert("Client Saved on Database.", ConsoleColor.Green);
+                Alert.ShowAlert("Client Saved on Database.", ConsoleColor.Green);
             }
             catch (Exception)
             {
-                Alert.showAlert("Something is wrong, client couldn't be saved.", ConsoleColor.Red);
+                Alert.ShowAlert("Something is wrong, client couldn't be saved.", ConsoleColor.Red);
             }
         }
 
-        public static void ReadEmployee(string documment)
+        public static void ReadEmployee(string document)
         {
             ProyectConnection NewConnection = new ProyectConnection();
             NewConnection.ConnectToday();
-
             SqlCommand com = new SqlCommand();
             com.Connection = ProyectConnection.conn;
+            string xdoc = document;
+            com.CommandText = "select Name, Address from Employee where Document = (@doc);";
+            com.Parameters.AddWithValue("doc", xdoc);
+            try
+            {
+                SqlDataReader register = com.ExecuteReader();
+                if (register.Read())
+                {
+                    Console.Write("\n");
+                    Alert.ShowMessage($"Client Found", ConsoleColor.Blue);
+                    Alert.ShowMessage($"---------------------------------------", ConsoleColor.Blue);
+                    Alert.ShowMessage($"Name: {register["Name"]}", ConsoleColor.Blue);
+                    Alert.ShowMessage($"Address: {register["Address"]}", ConsoleColor.Blue);
+                }
+                else
+                {
+                    Alert.ShowAlert("Client doesn't exist on database.", ConsoleColor.Red);
+                }
+            }
+            catch (Exception)
+            {
+                Alert.ShowAlert("Database Error", ConsoleColor.Red);
+            }
+        }
 
-            string xdoc = documment;
-
+        public static bool SearchEmployeeDocument(string document)
+        {
+            bool exists = false;
+            ProyectConnection NewConnection = new ProyectConnection();
+            NewConnection.ConnectToday();
+            SqlCommand com = new SqlCommand();
+            com.Connection = ProyectConnection.conn;
+            string xdoc = document;
             com.CommandText = "select Name, Address from Employee where Document = (@doc);";
             com.Parameters.AddWithValue("doc", xdoc);
 
@@ -49,20 +75,19 @@ namespace Oreo.Controller
                 SqlDataReader register = com.ExecuteReader();
                 if (register.Read())
                 {
-                    Console.Write("\n");
-                    Alert.showMessage($"Client Found", ConsoleColor.Blue);
-                    Alert.showMessage($"---------------------------------------", ConsoleColor.Blue);
-                    Alert.showMessage($"Name: {register["Name"]}", ConsoleColor.Blue);
-                    Alert.showMessage($"Address: {register["Address"]}", ConsoleColor.Blue);
+                    exists = true;
+                    return exists;
                 }
                 else
                 {
-                    Alert.showAlert("Client doesn't exist on database.", ConsoleColor.Red);
+                    Alert.ShowAlert("Client doesn't exist on database.", ConsoleColor.Red);
+                    return exists;                  
                 }
             }
             catch (Exception)
             {
-                Alert.showAlert("Database Error", ConsoleColor.Red);
+                Alert.ShowAlert("Database Error", ConsoleColor.Red);
+                return exists;
             }
         }
 
@@ -70,18 +95,16 @@ namespace Oreo.Controller
         {
             ProyectConnection NewConnection = new ProyectConnection();
             NewConnection.ConnectToday();
-
             SqlCommand com = new SqlCommand();
             com.Connection = ProyectConnection.conn;
-
             com.CommandText = "select Document, Name, Address from Employee";
             SqlDataReader register = com.ExecuteReader();
             while (register.Read())
             {
-                Alert.showMessage($"----------------------------", ConsoleColor.DarkCyan);
-                Alert.showMessage($"Document: {register["Document"]}", ConsoleColor.Blue);
-                Alert.showMessage($"Name: {register["Name"]}", ConsoleColor.Blue);
-                Alert.showMessage($"Address: {register["Address"]}", ConsoleColor.Blue);
+                Alert.ShowMessage($"----------------------------", ConsoleColor.DarkCyan);
+                Alert.ShowMessage($"Document: {register["Document"]}", ConsoleColor.Blue);
+                Alert.ShowMessage($"Name: {register["Name"]}", ConsoleColor.Blue);
+                Alert.ShowMessage($"Address: {register["Address"]}", ConsoleColor.Blue);
             }
         }
 
@@ -89,25 +112,21 @@ namespace Oreo.Controller
         {
             ProyectConnection NewConnection = new ProyectConnection();
             NewConnection.ConnectToday();
-
             SqlCommand com = new SqlCommand();
             com.Connection = ProyectConnection.conn;
-
             com.CommandText = "update Employee set Name=(@name), Address=(@add) where Document=(@doc)";
             com.Parameters.AddWithValue("name", updatedEmployee.Name);
             com.Parameters.AddWithValue("add", updatedEmployee.Address);
             com.Parameters.AddWithValue("doc", updatedEmployee.Document);
-
             int cant;
             cant = com.ExecuteNonQuery();
-
             if (cant == 1)
             {
-                Alert.showAlert("Client updated successfully.", ConsoleColor.Green);
+                Alert.ShowAlert("Client updated successfully.", ConsoleColor.Green);
             }
             else
             {
-                Alert.showAlert("Product doesn't exist on database.", ConsoleColor.Red);
+                Alert.ShowAlert("Product doesn't exist on database.", ConsoleColor.Red);
             }
         }
 
@@ -115,22 +134,18 @@ namespace Oreo.Controller
         {
             ProyectConnection NewConnection = new ProyectConnection();
             NewConnection.ConnectToday();
-
             SqlCommand com = new SqlCommand();
             com.Connection = ProyectConnection.conn;
-
             string xdoc = documment;
-
             com.CommandText = "delete from Employee where Document=(@doc)";
             com.Parameters.AddWithValue("doc", xdoc);
-
             if (com.ExecuteNonQuery() == 1)
             {
-                Alert.showAlert("Client deleted successfully.", ConsoleColor.Green);
+                Alert.ShowAlert("Client deleted successfully.", ConsoleColor.Green);
             }
             else
             {
-                Alert.showAlert("Client doesn't exist on database.", ConsoleColor.Red);
+                Alert.ShowAlert("Client doesn't exist on database.", ConsoleColor.Red);
             }
         }
     }
