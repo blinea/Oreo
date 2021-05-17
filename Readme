@@ -6,6 +6,7 @@ ProyectConnection.cs / Line 15  ---------> Route of new Database
 UtilityMenu.cs / Line 49  ---------> Route of .txt file to save Product Catalog
 ShopCtrl.cs / Line 31, 52, 79 -------> Route of txt file to save Shopping Cart Elements
 
+Create this database:
 
 -----------------------------------------------------------------------------------
 Script for Database:
