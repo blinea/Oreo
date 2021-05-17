@@ -10,24 +10,22 @@ namespace Oreo.View
     {
         public static void Login()
         {
-
             string userId = Employee.GetDocument().Document;
-
             if (EmployeeCtrl.SearchEmployeeDocument(userId))
             {
                 Shop.LaunchShopMenu(userId);
             }
             else
             {
-                Alert.ShowAlert("User doesn't exist on database", ConsoleColor.DarkRed);
+                Alert.ShowAlert("User doesn't exist on database.", ConsoleColor.DarkRed);
                 Alert.Confirmation();
             }
-
         }
 
         public static void LaunchFinishMenu(string userDocument)
         {
-            Order newOrder = new Order("420",userDocument);
+            Random random = new Random();
+            Order newOrder = new Order(random.Next().ToString(), userDocument);
             Alert.ShowAlert(newOrder.ToString(), ConsoleColor.DarkBlue);
             Console.WriteLine("\n");
             ShopCtrl.ShowShoppingCart();

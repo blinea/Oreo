@@ -1,18 +1,1 @@
-﻿| Product Id = 1 | Name = Oreo | Price = 600 | Description = 600gr|
-| Product Id = 2 | Name = Triton | Price = 500 | Description = 400gr|
-| Product Id = 3 | Name = Donuts | Price = 800 | Description = 300gr|
-| Product Id = 1 | Name = Oreo | Price = 600 | Description = 600gr|
-| Product Id = 2 | Name = Triton | Price = 500 | Description = 400gr|
-| Product Id = 3 | Name = Donuts | Price = 800 | Description = 300gr|
-| Product Id = 1 | Name = Oreo | Price = 600 | Description = 600gr|
-| Product Id = 2 | Name = Triton | Price = 500 | Description = 400gr|
-| Product Id = 3 | Name = Donuts | Price = 800 | Description = 300gr|
-| Product Id = 1 | Name = Oreo | Price = 600 | Description = 600gr|
-| Product Id = 2 | Name = Triton | Price = 500 | Description = 400gr|
-| Product Id = 3 | Name = Donuts | Price = 800 | Description = 300gr|
-| Product Id = 1 | Name = Oreo | Price = 600 | Description = 600gr|
-| Product Id = 2 | Name = Triton | Price = 500 | Description = 400gr|
-| Product Id = 3 | Name = Donuts | Price = 800 | Description = 300gr|
-| Product Id = 1 | Name = Oreo | Price = 600 | Description = 600gr|
-| Product Id = 2 | Name = Triton | Price = 500 | Description = 400gr|
-| Product Id = 3 | Name = Donuts | Price = 800 | Description = 300gr|
+﻿
